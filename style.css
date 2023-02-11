@@ -1,0 +1,185 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(29, 28, 28);
+  min-height: 100vh;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 210px 250px 20px;
+  grid-template-areas: "image" "text" "stats";
+  border-radius: 18px;
+  background: #1d1d1d;
+  color: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  font-family: "Roboto", sans-serif;
+  text-align: justify;
+  cursor: pointer;
+  margin: 30px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.rgb::after {
+  content: "";
+  background: linear-gradient(
+      45deg,
+      #ff0000 0%,
+      #ff9a00 10%,
+      #d0de21 20%,
+      #4fdc4a 30%,
+      #3fdad8 40%,
+      #2fc9e2 50%,
+      #1c7fee 60%,
+      #5f15f2 70%,
+      #ba0cf8 80%,
+      #fb07d9 90%,
+      #ff0000 100%
+    )
+    repeat 0% 0% / 300% 100%;
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  filter: blur(8px);
+  transform: translateZ(-1px);
+  animation: rgb 6s linear infinite;
+}
+
+.tilt-box-wrap {
+  position: relative;
+  transition: all 0.6s ease-out;
+  perspective: 1000px;
+}
+
+.tilt-box-wrap:hover {
+  transition: all 0.3s linear;
+}
+
+.tilt-box {
+  position: relative;
+  text-transform: uppercase;
+  transition: all 0.6s ease-out;
+  transform: rotateX(0deg) rotateY(0deg);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+@keyframes rgb {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card-image {
+  grid-area: image;
+  background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%),
+    url("img-1.jpeg");
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
+}
+
+.card-text {
+  grid-area: text;
+  margin: 25px;
+  transform: translateZ(30px);
+}
+
+.card-text .date {
+  color: rgb(255, 7, 110);
+  font-size: 13px;
+}
+
+.card-text p {
+  color: grey;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.card-text h2 {
+  margin-top: 0px;
+  font-size: 28px;
+}
+
+.t_over {
+  width: 33.333%;
+  height: 33.333%;
+  position: absolute;
+  z-index: 1;
+}
+
+.t_over:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+.t_over:nth-child(2) {
+  left: 33.333%;
+  top: 0;
+}
+.t_over:nth-child(3) {
+  left: 66.666%;
+  top: 0;
+}
+.t_over:nth-child(4) {
+  left: 0;
+  top: 33.333%;
+}
+.t_over:nth-child(5) {
+  left: 33.333%;
+  top: 33.333%;
+}
+.t_over:nth-child(6) {
+  left: 66.666%;
+  top: 33.333%;
+}
+.t_over:nth-child(7) {
+  left: 0;
+  top: 66.666%;
+}
+.t_over:nth-child(8) {
+  left: 33.333%;
+  top: 66.666%;
+}
+.t_over:nth-child(9) {
+  left: 66.666%;
+  top: 66.666%;
+}
+
+.t_over:nth-child(1):hover ~ .tilt-box {
+  transform: rotateX(-10deg) rotateY(10deg);
+}
+.t_over:nth-child(2):hover ~ .tilt-box {
+  transform: rotateX(-10deg) rotateY(0deg);
+}
+.t_over:nth-child(3):hover ~ .tilt-box {
+  transform: rotateX(-10deg) rotateY(-10deg);
+}
+.t_over:nth-child(4):hover ~ .tilt-box {
+  transform: rotateX(0deg) rotateY(10deg);
+}
+.t_over:nth-child(5):hover ~ .tilt-box {
+  transform: rotateX(0deg) rotateY(0deg);
+}
+.t_over:nth-child(6):hover ~ .tilt-box {
+  transform: rotateX(0deg) rotateY(-10deg);
+}
+.t_over:nth-child(7):hover ~ .tilt-box {
+  transform: rotateX(10deg) rotateY(10deg);
+}
+.t_over:nth-child(8):hover ~ .tilt-box {
+  transform: rotateX(10deg) rotateY(0deg);
+}
+.t_over:nth-child(9):hover ~ .tilt-box {
+  transform: rotateX(10deg) rotateY(-10deg);
+}
